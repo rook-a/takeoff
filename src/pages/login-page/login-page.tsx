@@ -1,12 +1,11 @@
+import { Container } from '@mui/material';
 import LoginForm from '../../components/login-form/login-form';
-
-import styles from './login-page.module.css';
 
 function LoginPage(): JSX.Element {
   return (
-    <main className={styles['container']}>
+    <Container sx={{ display: 'flex', height: '100%' }}>
       <LoginForm />
-    </main>
+    </Container>
   );
 }
 

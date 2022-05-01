@@ -9,7 +9,7 @@ const LoginPage = lazy(() => import('../../pages/login-page/login-page'));
 const Contacts = lazy(() => import('../../pages/contacts/contacts'));
 
 function App(): JSX.Element {
-  const authorizationStatus = AuthorizationStatus.NoAuth;
+  const authorizationStatus = AuthorizationStatus.Auth;
 
   return (
     <Suspense>

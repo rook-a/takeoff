@@ -1,14 +1,25 @@
-import { FormControl, IconButton, Input, InputLabel } from '@mui/material';
+import {
+  Container,
+  FormControl,
+  IconButton,
+  Input,
+  InputLabel,
+} from '@mui/material';
 
 import ContactsList from '../../components/contacts-list/contacts-list';
 
 import SendIcon from '@mui/icons-material/Send';
 
-import styles from './contacts.module.css';
-
 function Contacts(): JSX.Element {
   return (
-    <main className={styles['contacts-container']}>
+    <Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: '60%',
+        height: '100%',
+      }}>
       <ContactsList />
 
       <FormControl variant='standard'>
@@ -24,7 +35,7 @@ function Contacts(): JSX.Element {
           }
         />
       </FormControl>
-    </main>
+    </Container>
   );
 }
 
