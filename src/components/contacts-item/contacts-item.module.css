@@ -1,0 +1,10 @@
+.contacts-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contacts-item:last-child {
+  margin-bottom: 50px;
+}

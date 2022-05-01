@@ -1,0 +1,17 @@
+.main {
+  height: 100%;
+}
+
+.menu-links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+  text-transform: uppercase;
+}
+
+.link {
+  font-weight: 500;
+  color: #0288d1;
+  text-decoration: none;
+}
