@@ -1,3 +1,3 @@
 export const ApiPath = {
-  ORDERS: '/orders',
+  CONTACTS: '/contacts',
 };

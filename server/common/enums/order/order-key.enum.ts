@@ -1,6 +1,6 @@
 export const OrderKey = {
   NAME: 'name',
+  CITY: 'city',
   PHONE: 'phone',
-  PEOPLE_COUNT: 'peopleCount',
-  IS_LEGAL: 'isLegal',
+  COMPANY: 'company',
 };

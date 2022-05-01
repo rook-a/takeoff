@@ -7,7 +7,7 @@ import validateSchema from '../../middlewares/middlewares';
 
 const initOrdersRouter = (server: Application) => {
   server.post(
-    ApiPath.ORDERS,
+    ApiPath.CONTACTS,
     validateSchema(orderCreatePayload),
     (_req, res) => {
       return res.status(HttpCode.CREATED).json(HttpCode.CREATED);

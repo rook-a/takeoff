@@ -1,7 +1,7 @@
-import quests from './quests/quests.json';
+import contacts from './contacts/contacts.json';
 
 const initDatabase = () => ({
-  quests,
+  contacts,
 });
 
 export default initDatabase;
