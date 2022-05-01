@@ -1,7 +1,11 @@
-import styles from './footer.module.css';
+import { Typography, Toolbar } from '@mui/material';
 
 function Footer(): JSX.Element {
-  return <footer className={styles['footer']}>FOOTER</footer>;
+  return (
+    <Toolbar sx={{ height: '100%', color: '#0288d1' }}>
+      <Typography sx={{ m: 'auto' }}>FOOTER</Typography>
+    </Toolbar>
+  );
 }
 
 export default Footer;

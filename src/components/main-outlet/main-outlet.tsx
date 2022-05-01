@@ -1,16 +1,30 @@
 import { Outlet } from 'react-router-dom';
-import Footer from '../footer/footer';
-import Header from '../header/header';
+import { Grid } from '@mui/material';
 
-import styles from './main-outlet.module.css';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
 function MainOutlet(): JSX.Element {
   return (
-    <div className={styles['container']}>
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <Grid
+      container
+      direction='column'
+      height='100vh'
+      sx={{
+        fontFamily: 'Roboto, Arial, sans-serif',
+        fontSize: '16px',
+        color: '#0288d1',
+      }}>
+      <Grid item xl>
+        <Header />
+      </Grid>
+      <Grid item md>
+        <Outlet />
+      </Grid>
+      <Grid item xl>
+        <Footer />
+      </Grid>
+    </Grid>
   );
 }
 

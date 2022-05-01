@@ -1,9 +1,16 @@
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
+.logo {
+  font-size: 28px;
+  color: inherit;
 
-  border: 1px solid rgba(2, 136, 209, 0.3);
-  color: #0288d1;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  margin-right: 48px;
+}
+
+.link {
+  color: inherit;
+
+  text-transform: uppercase;
+  text-decoration: none;
 }

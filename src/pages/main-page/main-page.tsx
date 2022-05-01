@@ -1,26 +1,10 @@
-import { List } from '@mui/material';
-import { Link } from 'react-router-dom';
-
-import styles from './main-page.module.css';
+import { Container, Typography } from '@mui/material';
 
 function MainPage(): JSX.Element {
   return (
-    <>
-      <main className={styles['main']}>
-        <List className={styles['menu-links']}>
-          <li>
-            <Link className={styles['link']} to='/login'>
-              Login
-            </Link>
-          </li>
-          <li>
-            <Link className={styles['link']} to='/contacts'>
-              Contacts
-            </Link>
-          </li>
-        </List>
-      </main>
-    </>
+    <Container sx={{ display: 'flex', height: '100%' }}>
+      <Typography sx={{ m: 'auto', fontSize: '46px' }}>Welcome</Typography>
+    </Container>
   );
 }
 
