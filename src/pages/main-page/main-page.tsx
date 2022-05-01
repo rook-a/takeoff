@@ -6,7 +6,6 @@ import styles from './main-page.module.css';
 function MainPage(): JSX.Element {
   return (
     <>
-      <header> HEADER</header>
       <main className={styles['main']}>
         <List className={styles['menu-links']}>
           <li>
@@ -21,7 +20,6 @@ function MainPage(): JSX.Element {
           </li>
         </List>
       </main>
-      <footer>FOOTER</footer>
     </>
   );
 }

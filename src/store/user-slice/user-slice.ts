@@ -65,7 +65,7 @@ export const loginAction = createAsyncThunk<
         password,
       });
 
-      dispatch(redirectToRoute(AppRoute.Main));
+      dispatch(redirectToRoute(AppRoute.Contacts));
       return data;
     } catch (err) {
       handleError(err);
@@ -86,7 +86,7 @@ export const logoutAction = createAsyncThunk<
 >('user/logout', async (_arg, { dispatch, extra: api }) => {
   try {
     await api.delete(APIRoute.Logout);
-    dispatch(fetchOffersAction());
+    dispatch(redirectToRoute(AppRoute.Root));
   } catch (err) {
     handleError(err);
     throw err;
@@ -102,7 +102,31 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (buider) => {
-    buider.addCase(loginAction.pending, (state) => {});
+    buider
+      .addCase(loginAction.pending, (state) => {
+        state.loginStatus = FetchStatus.Pending;
+      })
+      .addCase(loginAction.fulfilled, (state, action) => {
+        state.loginStatus = FetchStatus.Fulfilled;
+        state.authorizationStatus = AuthorizationStatus.Auth;
+        setUser(action.payload);
+      })
+      .addCase(loginAction.rejected, (state) => {
+        state.loginStatus = FetchStatus.Rejected;
+        state.authorizationStatus = AuthorizationStatus.NoAuth;
+      })
+      .addCase(logoutAction.pending, (state) => {
+        state.logoutStatus = FetchStatus.Pending;
+      })
+      .addCase(logoutAction.fulfilled, (state) => {
+        state.logoutStatus = FetchStatus.Fulfilled;
+        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        removeUser();
+      })
+      .addCase(logoutAction.rejected, (state) => {
+        state.logoutStatus = FetchStatus.Rejected;
+        state.authorizationStatus = AuthorizationStatus.Auth;
+      });
   },
 });
 

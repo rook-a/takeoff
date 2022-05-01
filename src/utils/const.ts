@@ -2,6 +2,7 @@ export const enum AppRoute {
   Root = '/',
   Login = '/login',
   Contacts = '/contacts',
+  NotFound = '*',
 }
 
 export enum HttpCode {
@@ -11,7 +12,9 @@ export enum HttpCode {
 }
 
 export const enum APIRoute {
-  Users = '/users',
+  Contacts = '/contacts',
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export enum FetchStatus {
@@ -30,4 +33,5 @@ export enum AuthorizationStatus {
 export const enum NameSpace {
   App = 'App',
   User = 'User',
+  Comments = 'Comments',
 }
