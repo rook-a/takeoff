@@ -1,18 +1,16 @@
-import { ButtonGroup, IconButton } from '@mui/material';
+import { ButtonGroup, IconButton, List, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 
-import styles from './contacts-item.module.css';
-
 function ContactsItem(): JSX.Element {
   return (
-    <li className={styles['contacts-item']}>
-      <div>
-        <p>name: qwerty</p>
-        <p>city: cityname</p>
-        <p>company: companyName</p>
-        <p>phone: 1234</p>
-      </div>
+    <ListItem sx={{ justifyContent: 'space-between' }}>
+      <List>
+        <ListItem>name: qwerty</ListItem>
+        <ListItem>city: cityname</ListItem>
+        <ListItem>company: companyName</ListItem>
+        <ListItem>phone: 1234</ListItem>
+      </List>
 
       <ButtonGroup size='medium'>
         <IconButton
@@ -25,7 +23,7 @@ function ContactsItem(): JSX.Element {
           <DeleteIcon />
         </IconButton>
       </ButtonGroup>
-    </li>
+    </ListItem>
   );
 }
 

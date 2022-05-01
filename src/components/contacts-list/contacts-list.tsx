@@ -1,12 +1,13 @@
 import { List } from '@mui/material';
 import ContactsItem from '../contacts-item/contacts-item';
+import EditContactFrom from '../edit-contact-form/edit-contact-form';
 
 function ContactsList(): JSX.Element {
   return (
-    <List>
+    <List sx={{ mb: '50px' }}>
       <ContactsItem />
-      <ContactsItem />
-      <ContactsItem />
+
+      <EditContactFrom />
     </List>
   );
 }
