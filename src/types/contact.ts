@@ -1,12 +1,14 @@
-interface Company {
-  name: string;
-}
-
 export interface Contact {
   id: number;
   name: string;
   city: string;
-  email: string;
   phone: string;
-  company: Company;
+  company: string;
+}
+
+export interface NewContact {
+  name: string;
+  city: string;
+  phone: string;
+  company: string;
 }
