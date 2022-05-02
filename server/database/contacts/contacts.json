@@ -50,5 +50,32 @@
         "name": "Keebler LLC"
       }
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "Sincere@april.biz",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "email": "Shanna@melissa.tv",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "email": "Nathan@yesenia.net",
+      "password": "123"
+    },
+    {
+      "id": 4,
+      "email": "Julianne.OConner@kory.org",
+      "password": "123"
+    },
+    {
+      "id": 5,
+      "email": "Lucio_Hettinger@annie.ca",
+      "password": "123"
+    }
   ]
 }
