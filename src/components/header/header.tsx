@@ -5,7 +5,11 @@ import { AppRoute } from '../../utils/const';
 
 import styles from './header.module.css';
 
-function Header(): JSX.Element {
+interface HeaderProps {
+  isAuth: boolean;
+}
+
+function Header({ isAuth }: HeaderProps): JSX.Element {
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -19,9 +23,15 @@ function Header(): JSX.Element {
             </Link>
           </ListItem>
           <ListItem sx={{ justifyContent: 'flex-end' }}>
-            <Link to={AppRoute.Login} className={styles['link']}>
-              Login
-            </Link>
+            {isAuth ? (
+              <Link to={AppRoute.Root} className={styles['link']}>
+                Logout
+              </Link>
+            ) : (
+              <Link to={AppRoute.Login} className={styles['link']}>
+                Login
+              </Link>
+            )}
           </ListItem>
         </List>
       </Toolbar>

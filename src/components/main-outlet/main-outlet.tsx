@@ -9,6 +9,7 @@ function MainOutlet(): JSX.Element {
     <Grid
       container
       direction='column'
+      wrap='nowrap'
       height='100vh'
       sx={{
         fontFamily: 'Roboto, Arial, sans-serif',
@@ -16,7 +17,7 @@ function MainOutlet(): JSX.Element {
         color: '#0288d1',
       }}>
       <Grid item xl>
-        <Header />
+        <Header isAuth />
       </Grid>
       <Grid item md>
         <Outlet />
