@@ -33,5 +33,5 @@ export enum AuthorizationStatus {
 export const enum NameSpace {
   App = 'App',
   User = 'User',
-  Comments = 'Comments',
+  Contacts = 'Contacts',
 }

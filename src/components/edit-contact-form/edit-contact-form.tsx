@@ -1,14 +1,27 @@
 import { List, ListItem, TextField, InputAdornment } from '@mui/material';
+import { useState } from 'react';
+import { Contact } from '../../types/contact';
 
-function EditContactFrom(): JSX.Element {
+interface EditContactsFormProps {
+  contact: Contact;
+}
+
+function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
+  const { name, city, company, phone } = contact;
+  const [userName, setUserName] = useState(name);
+  const [userCity, setUserCity] = useState(city);
+  const [userCompany, setUserCompany] = useState(company.name);
+  const [userPhone, setUserPhone] = useState(phone);
+
   return (
     <List>
       <ListItem>
         <TextField
+          onChange={(evt) => setUserName(evt.target.value)}
           sx={{ width: '100%' }}
           id='standard-basic'
           variant='standard'
-          // value='qwerty'
+          value={userName}
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>name: </InputAdornment>
@@ -18,10 +31,11 @@ function EditContactFrom(): JSX.Element {
       </ListItem>
       <ListItem>
         <TextField
+          onChange={(evt) => setUserCity(evt.target.value)}
           sx={{ width: '100%' }}
           id='standard-basic'
           variant='standard'
-          // value='cityname'
+          value={userCity}
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>city: </InputAdornment>
@@ -31,10 +45,11 @@ function EditContactFrom(): JSX.Element {
       </ListItem>
       <ListItem>
         <TextField
+          onChange={(evt) => setUserCompany(evt.target.value)}
           sx={{ width: '100%' }}
           id='standard-basic'
           variant='standard'
-          // value='companyName'
+          value={userCompany}
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>company: </InputAdornment>
@@ -44,10 +59,11 @@ function EditContactFrom(): JSX.Element {
       </ListItem>
       <ListItem>
         <TextField
+          onChange={(evt) => setUserPhone(evt.target.value)}
           sx={{ width: '100%' }}
           id='standard-basic'
           variant='standard'
-          // value='1234'
+          value={userPhone}
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>phone: </InputAdornment>

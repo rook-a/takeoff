@@ -5,9 +5,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import DoneIcon from '@mui/icons-material/Done';
 import EditContactFrom from '../edit-contact-form/edit-contact-form';
+import { Contact } from '../../types/contact';
 
-function ContactsItem(): JSX.Element {
+interface ContactsItemProps {
+  contact: Contact;
+}
+
+function ContactsItem({ contact }: ContactsItemProps): JSX.Element {
   const [isEditForm, setIsEditForm] = useState(false);
+
+  const { name, city, company, phone } = contact;
 
   const handleOpenEditFormClick = () => {
     setIsEditForm(!isEditForm);
@@ -20,13 +27,13 @@ function ContactsItem(): JSX.Element {
   return (
     <ListItem sx={{ justifyContent: 'space-between' }}>
       {isEditForm ? (
-        <EditContactFrom />
+        <EditContactFrom contact={contact} />
       ) : (
         <List>
-          <ListItem>name: qwerty</ListItem>
-          <ListItem>city: cityname</ListItem>
-          <ListItem>company: companyName</ListItem>
-          <ListItem>phone: 1234</ListItem>
+          <ListItem>name: {name}</ListItem>
+          <ListItem>city: {city}</ListItem>
+          <ListItem>company: {company.name}</ListItem>
+          <ListItem>phone: {phone}</ListItem>
         </List>
       )}
 
