@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import {
   List,
   ListItem,
@@ -28,7 +28,9 @@ function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
   const [userCompany, setUserCompany] = useState(company);
   const [userPhone, setUserPhone] = useState(phone);
 
-  const handleUpdateContactClick = () => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
     const data = {
       id,
       name: userName,
@@ -41,7 +43,16 @@ function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
   };
 
   return (
-    <>
+    <form
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+      }}
+      action='#'
+      method='post'
+      onSubmit={handleSubmit}>
       <List>
         <ListItem>
           <TextField
@@ -102,7 +113,7 @@ function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
       </List>
       <ButtonGroup size='medium'>
         <IconButton
-          onClick={handleUpdateContactClick}
+          type='submit'
           edge='end'
           aria-label='change element'
           style={{ marginRight: '7px' }}>
@@ -119,7 +130,7 @@ function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
           <DeleteIcon />
         </IconButton>
       </ButtonGroup>
-    </>
+    </form>
   );
 }
 

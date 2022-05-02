@@ -6,28 +6,27 @@ import { handleError } from '../../services/handle-error';
 import { APIRoute, FetchStatus, NameSpace } from '../../utils/const';
 import { AppDispatch, State } from '../../types/state';
 import { Contact, NewContact } from '../../types/contact';
-import { Data } from '../../types/data';
 
 interface InitialState {
-  data: Data[];
   contacts: Contact[];
   contactsStatus: FetchStatus;
-  contactsError: boolean;
 
-  updateContactState: FetchStatus;
+  updateContactStatus: FetchStatus;
+  deleteContactStatus: FetchStatus;
+  sendNewContactStatus: FetchStatus;
 }
 
 const initialState: InitialState = {
-  data: [],
   contacts: [],
   contactsStatus: FetchStatus.Idle,
-  contactsError: false,
 
-  updateContactState: FetchStatus.Idle,
+  updateContactStatus: FetchStatus.Idle,
+  deleteContactStatus: FetchStatus.Idle,
+  sendNewContactStatus: FetchStatus.Idle,
 };
 
 export const fetchContacts = createAsyncThunk<
-  Data,
+  Contact[],
   undefined,
   {
     dispatch: AppDispatch;
@@ -36,7 +35,7 @@ export const fetchContacts = createAsyncThunk<
   }
 >('data/fetchContacts', async (_arg, { dispatch, extra: api }) => {
   try {
-    const { data } = await api.get<Data>(APIRoute.Contacts);
+    const { data } = await api.get<Contact[]>(APIRoute.Contacts);
 
     return data;
   } catch (error) {
@@ -113,9 +112,10 @@ export const deleteContact = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('data/updateContact', async (id: number, { dispatch, extra: api }) => {
+>('data/deleteContact', async (id: number, { dispatch, extra: api }) => {
   try {
-    return await api.delete(`${APIRoute.Contacts}/${id}`);
+    const { data } = await api.delete(`${APIRoute.Contacts}/${id}`);
+    return data;
   } catch (error) {
     handleError(error);
     throw error;
@@ -132,21 +132,38 @@ export const contactsSlice = createSlice({
         state.contactsStatus = FetchStatus.Pending;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts = action.payload.contacts;
+        state.contacts = action.payload;
         state.contactsStatus = FetchStatus.Fulfilled;
       })
       .addCase(fetchContacts.rejected, (state) => {
         state.contactsStatus = FetchStatus.Rejected;
-        state.contactsError = true;
       })
       .addCase(updateContact.pending, (state) => {
-        state.updateContactState = FetchStatus.Pending;
+        state.updateContactStatus = FetchStatus.Pending;
       })
       .addCase(updateContact.fulfilled, (state) => {
-        state.updateContactState = FetchStatus.Fulfilled;
+        state.updateContactStatus = FetchStatus.Fulfilled;
       })
       .addCase(updateContact.rejected, (state) => {
-        state.updateContactState = FetchStatus.Rejected;
+        state.updateContactStatus = FetchStatus.Rejected;
+      })
+      .addCase(sendNewContact.pending, (state) => {
+        state.sendNewContactStatus = FetchStatus.Pending;
+      })
+      .addCase(sendNewContact.fulfilled, (state) => {
+        state.sendNewContactStatus = FetchStatus.Fulfilled;
+      })
+      .addCase(sendNewContact.rejected, (state) => {
+        state.sendNewContactStatus = FetchStatus.Rejected;
+      })
+      .addCase(deleteContact.pending, (state) => {
+        state.deleteContactStatus = FetchStatus.Pending;
+      })
+      .addCase(deleteContact.fulfilled, (state) => {
+        state.deleteContactStatus = FetchStatus.Fulfilled;
+      })
+      .addCase(deleteContact.rejected, (state) => {
+        state.deleteContactStatus = FetchStatus.Rejected;
       });
   },
 });
@@ -156,4 +173,8 @@ const selectContactsState = (state: State) => state[NameSpace.Contacts];
 export const selectContacts = (state: State) =>
   selectContactsState(state).contacts;
 export const selectUpdateContactStatus = (state: State) =>
-  selectContactsState(state).updateContactState;
+  selectContactsState(state).updateContactStatus;
+export const selectSendContactStatus = (state: State) =>
+  selectContactsState(state).sendNewContactStatus;
+export const selectDeleteContactStatus = (state: State) =>
+  selectContactsState(state).deleteContactStatus;

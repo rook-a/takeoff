@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ButtonGroup, IconButton, List, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import EditContactFrom from '../edit-contact-form/edit-contact-form';
 import { Contact } from '../../types/contact';
-import { useAppSelector } from '../../hooks/hooks';
-import { selectUpdateContactStatus } from '../../store/contacts-slice/contacts-slice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import {
+  deleteContact,
+  fetchContacts,
+  selectDeleteContactStatus,
+  selectUpdateContactStatus,
+} from '../../store/contacts-slice/contacts-slice';
 import { FetchStatus } from '../../utils/const';
 
 interface ContactsItemProps {
@@ -14,17 +19,27 @@ interface ContactsItemProps {
 }
 
 function ContactsItem({ contact }: ContactsItemProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const updateContactStatus = useAppSelector(selectUpdateContactStatus);
+  const deleteContactStatus = useAppSelector(selectDeleteContactStatus);
   const [isEditForm, setIsEditForm] = useState(false);
 
-  const { name, city, company, phone } = contact;
+  const { name, city, company, phone, id } = contact;
 
-  if (updateContactStatus === FetchStatus.Fulfilled) {
-    setIsEditForm(!isEditForm);
-  }
+  useEffect(() => {
+    if (updateContactStatus === FetchStatus.Fulfilled) {
+      dispatch(fetchContacts());
+      setIsEditForm(false);
+    }
+
+    if (deleteContactStatus === FetchStatus.Fulfilled) {
+      dispatch(fetchContacts());
+      setIsEditForm(false);
+    }
+  }, [deleteContactStatus, dispatch, isEditForm, updateContactStatus]);
 
   const handleOpenEditFormClick = () => {
-    setIsEditForm(!isEditForm);
+    setIsEditForm(true);
   };
 
   return (
@@ -48,7 +63,13 @@ function ContactsItem({ contact }: ContactsItemProps): JSX.Element {
               <CreateIcon />
             </IconButton>
 
-            <IconButton color='error' edge='end' aria-label='delete element'>
+            <IconButton
+              onClick={() => {
+                dispatch(deleteContact(id));
+              }}
+              color='error'
+              edge='end'
+              aria-label='delete element'>
               <DeleteIcon />
             </IconButton>
           </ButtonGroup>
