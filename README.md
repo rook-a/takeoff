@@ -6,6 +6,7 @@
 - Redux / ReduxToolkit
 - Typescrips
 - Axios
+- Material UI
 - json-server
 
 ### Запуск проекта
