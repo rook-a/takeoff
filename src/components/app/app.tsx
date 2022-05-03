@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import MainOutlet from '../main-outlet/main-outlet';
 import PrivateOutlet from '../private-outlet/private-outlet';
+import NotFound from '../../pages/not-found/not-found';
 import Spinner from '../spinner/spinner';
 
 import { useAppSelector } from '../../hooks/hooks';
@@ -30,7 +31,7 @@ function App(): JSX.Element {
           </Route>
 
           <Route path={AppRoute.Login} element={<LoginPage />} />
-          <Route path={AppRoute.NotFound} element={<p>404. Not Found</p>} />
+          <Route path={AppRoute.NotFound} element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
