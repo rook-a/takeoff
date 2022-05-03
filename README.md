@@ -4,7 +4,7 @@
 
 - React 18
 - Redux / ReduxToolkit
-- Typescrips
+- Typescript
 - Axios
 - Material UI
 - json-server
