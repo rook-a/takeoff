@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import MainOutlet from '../main-outlet/main-outlet';
 import PrivateOutlet from '../private-outlet/private-outlet';
+import Spinner from '../spinner/spinner';
 
 import { useAppSelector } from '../../hooks/hooks';
 import { selectAuthrizationStatus } from '../../store/user-slice/user-slice';
@@ -17,7 +18,7 @@ function App(): JSX.Element {
   const authorizationStatus = useAppSelector(selectAuthrizationStatus);
 
   return (
-    <Suspense>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         <Route path={AppRoute.Root} element={<MainOutlet />}>
           <Route index element={<MainPage />} />
