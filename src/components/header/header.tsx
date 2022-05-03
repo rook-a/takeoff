@@ -25,7 +25,7 @@ function Header({ authorizationStatus }: HeaderProps): JSX.Element {
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   return (
-    <AppBar position='static'>
+    <AppBar position='static' sx={{ mb: '50px' }}>
       <Toolbar>
         <Link to={AppRoute.Root} className={styles['logo']}>
           LOGO
