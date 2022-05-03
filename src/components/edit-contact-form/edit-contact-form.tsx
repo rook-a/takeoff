@@ -7,14 +7,17 @@ import {
   ButtonGroup,
   IconButton,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
-import { Contact } from '../../types/contact';
+
 import { useAppDispatch } from '../../hooks/hooks';
 import {
   deleteContact,
   updateContact,
 } from '../../store/contacts-slice/contacts-slice';
+
+import { Contact } from '../../types/contact';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
 
 interface EditContactsFormProps {
   contact: Contact;

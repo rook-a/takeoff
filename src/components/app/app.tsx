@@ -1,10 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/hooks';
-import { selectAuthrizationStatus } from '../../store/user-slice/user-slice';
-import { AppRoute } from '../../utils/const';
+
 import MainOutlet from '../main-outlet/main-outlet';
 import PrivateOutlet from '../private-outlet/private-outlet';
+
+import { useAppSelector } from '../../hooks/hooks';
+import { selectAuthrizationStatus } from '../../store/user-slice/user-slice';
+
+import { AppRoute } from '../../utils/const';
 
 const MainPage = lazy(() => import('../../pages/main-page/main-page'));
 const LoginPage = lazy(() => import('../../pages/login-page/login-page'));

@@ -1,6 +1,7 @@
-import { AppBar, List, ListItem, Toolbar } from '@mui/material';
 import { SyntheticEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { AppBar, List, ListItem, Toolbar } from '@mui/material';
+
 import { useAppDispatch } from '../../hooks/hooks';
 import { logoutAction } from '../../store/user-slice/user-slice';
 

@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+
 import { AppRoute, AuthorizationStatus } from '../../utils/const';
 
 interface PrivateOutletProp {

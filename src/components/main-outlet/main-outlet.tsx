@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
+
 import { useAppSelector } from '../../hooks/hooks';
 import { selectAuthrizationStatus } from '../../store/user-slice/user-slice';
 

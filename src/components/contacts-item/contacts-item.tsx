@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-
 import { ButtonGroup, IconButton, List, ListItem } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CreateIcon from '@mui/icons-material/Create';
+
 import EditContactFrom from '../edit-contact-form/edit-contact-form';
-import { Contact } from '../../types/contact';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
   deleteContact,
@@ -12,7 +9,12 @@ import {
   selectDeleteContactStatus,
   selectUpdateContactStatus,
 } from '../../store/contacts-slice/contacts-slice';
+
+import { Contact } from '../../types/contact';
 import { FetchStatus } from '../../utils/const';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import CreateIcon from '@mui/icons-material/Create';
 
 interface ContactsItemProps {
   contact: Contact;

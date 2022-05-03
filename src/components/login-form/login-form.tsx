@@ -7,13 +7,16 @@ import {
   Input,
   Button,
 } from '@mui/material';
-import styles from './login-form.module.css';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
   loginAction,
   selectloginStatus,
 } from '../../store/user-slice/user-slice';
+
 import { FetchStatus } from '../../utils/const';
+
+import styles from './login-form.module.css';
 
 const REG_EXP_EMAIL = /^\S+@[aA-zZ]{2,10}\.[aA-zZ]{2,3}$/;
 const REG_EXP_PASSWORD = /([0-9]{1}[aA-zZ]{1})|([aA-zZ]{1}[0-9]{1})/i;

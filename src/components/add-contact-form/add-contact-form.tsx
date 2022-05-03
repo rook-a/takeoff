@@ -1,3 +1,4 @@
+import { FormEvent, useEffect, useState } from 'react';
 import {
   ButtonGroup,
   FormControl,
@@ -8,15 +9,16 @@ import {
   TextField,
 } from '@mui/material';
 
-import SendIcon from '@mui/icons-material/Send';
 import {
   fetchContacts,
   selectSendContactStatus,
   sendNewContact,
 } from '../../store/contacts-slice/contacts-slice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { FormEvent, useEffect, useState } from 'react';
+
 import { FetchStatus } from '../../utils/const';
+
+import SendIcon from '@mui/icons-material/Send';
 
 function AddContactForm(): JSX.Element {
   const sendContactStatus = useAppSelector(selectSendContactStatus);

@@ -1,7 +1,9 @@
 import { List } from '@mui/material';
+
+import ContactsItem from '../contacts-item/contacts-item';
+
 import { useAppSelector } from '../../hooks/hooks';
 import { selectContacts } from '../../store/contacts-slice/contacts-slice';
-import ContactsItem from '../contacts-item/contacts-item';
 
 function ContactsList(): JSX.Element {
   const contacts = useAppSelector(selectContacts);
