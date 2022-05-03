@@ -63,7 +63,7 @@ function AddContactForm(): JSX.Element {
           alignItems: 'center',
           width: '100%',
         }}>
-        <List>
+        <List sx={{ flexGrow: 1 }}>
           <ListItem>
             <TextField
               onChange={(evt) => setName(evt.target.value)}

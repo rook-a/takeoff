@@ -56,7 +56,7 @@ function EditContactFrom({ contact }: EditContactsFormProps): JSX.Element {
       action='#'
       method='post'
       onSubmit={handleSubmit}>
-      <List>
+      <List sx={{ flexGrow: 1 }}>
         <ListItem>
           <TextField
             onChange={(evt) => setUserName(evt.target.value)}
