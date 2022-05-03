@@ -125,7 +125,17 @@ export const deleteContact = createAsyncThunk<
 export const contactsSlice = createSlice({
   name: NameSpace.Contacts,
   initialState,
-  reducers: {},
+  reducers: {
+    changeUpdateContactStatus: (state, action) => {
+      state.updateContactStatus = action.payload;
+    },
+    changeDeleteContactStatus: (state, action) => {
+      state.deleteContactStatus = action.payload;
+    },
+    changeSendContactStatus: (state, action) => {
+      state.sendNewContactStatus = action.payload;
+    },
+  },
   extraReducers: (buider) => {
     buider
       .addCase(fetchContacts.pending, (state) => {
@@ -167,6 +177,12 @@ export const contactsSlice = createSlice({
       });
   },
 });
+
+export const {
+  changeDeleteContactStatus,
+  changeSendContactStatus,
+  changeUpdateContactStatus,
+} = contactsSlice.actions;
 
 const selectContactsState = (state: State) => state[NameSpace.Contacts];
 

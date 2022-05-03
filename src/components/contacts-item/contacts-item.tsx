@@ -4,6 +4,8 @@ import { ButtonGroup, IconButton, List, ListItem } from '@mui/material';
 import EditContactFrom from '../edit-contact-form/edit-contact-form';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
+  changeDeleteContactStatus,
+  changeUpdateContactStatus,
   deleteContact,
   fetchContacts,
   selectDeleteContactStatus,
@@ -31,11 +33,13 @@ function ContactsItem({ contact }: ContactsItemProps): JSX.Element {
   useEffect(() => {
     if (updateContactStatus === FetchStatus.Fulfilled) {
       dispatch(fetchContacts());
+      dispatch(changeUpdateContactStatus(FetchStatus.Idle));
       setIsEditForm(false);
     }
 
     if (deleteContactStatus === FetchStatus.Fulfilled) {
       dispatch(fetchContacts());
+      dispatch(changeDeleteContactStatus(FetchStatus.Idle));
       setIsEditForm(false);
     }
   }, [deleteContactStatus, dispatch, isEditForm, updateContactStatus]);

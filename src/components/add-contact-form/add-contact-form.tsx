@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 
 import {
+  changeSendContactStatus,
   fetchContacts,
   selectSendContactStatus,
   sendNewContact,
@@ -31,6 +32,7 @@ function AddContactForm(): JSX.Element {
   useEffect(() => {
     if (sendContactStatus === FetchStatus.Fulfilled) {
       dispatch(fetchContacts());
+      dispatch(changeSendContactStatus(FetchStatus.Idle));
 
       setName('');
       setCity('');
