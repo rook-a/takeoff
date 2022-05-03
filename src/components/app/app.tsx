@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../utils/const';
+import { useAppSelector } from '../../hooks/hooks';
+import { selectAuthrizationStatus } from '../../store/user-slice/user-slice';
+import { AppRoute } from '../../utils/const';
 import MainOutlet from '../main-outlet/main-outlet';
 import PrivateOutlet from '../private-outlet/private-outlet';
 
@@ -9,7 +11,7 @@ const LoginPage = lazy(() => import('../../pages/login-page/login-page'));
 const Contacts = lazy(() => import('../../pages/contacts/contacts'));
 
 function App(): JSX.Element {
-  const authorizationStatus = AuthorizationStatus.Auth;
+  const authorizationStatus = useAppSelector(selectAuthrizationStatus);
 
   return (
     <Suspense>

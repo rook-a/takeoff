@@ -14,7 +14,6 @@ export enum HttpCode {
 export const enum APIRoute {
   Contacts = '/contacts',
   Login = '/login',
-  Logout = '/logout',
 }
 
 export enum FetchStatus {

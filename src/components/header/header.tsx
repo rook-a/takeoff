@@ -1,15 +1,28 @@
 import { AppBar, List, ListItem, Toolbar } from '@mui/material';
+import { SyntheticEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/hooks';
+import { logoutAction } from '../../store/user-slice/user-slice';
 
-import { AppRoute } from '../../utils/const';
+import { AppRoute, AuthorizationStatus } from '../../utils/const';
 
 import styles from './header.module.css';
 
 interface HeaderProps {
-  isAuth: boolean;
+  authorizationStatus: AuthorizationStatus;
 }
 
-function Header({ isAuth }: HeaderProps): JSX.Element {
+function Header({ authorizationStatus }: HeaderProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const handleClick = (evt: SyntheticEvent) => {
+    evt.preventDefault();
+
+    dispatch(logoutAction());
+  };
+
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
+
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -24,7 +37,10 @@ function Header({ isAuth }: HeaderProps): JSX.Element {
           </ListItem>
           <ListItem sx={{ justifyContent: 'flex-end' }}>
             {isAuth ? (
-              <Link to={AppRoute.Root} className={styles['link']}>
+              <Link
+                onClick={handleClick}
+                to={AppRoute.Root}
+                className={styles['link']}>
                 Logout
               </Link>
             ) : (

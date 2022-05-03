@@ -4,7 +4,6 @@
       "id": 1,
       "name": "Leanne Graham",
       "city": "Gwenborough",
-      "email": "Sincere@april.biz",
       "phone": "1770736803",
       "company": "Romaguera-Crona"
     },
@@ -12,14 +11,12 @@
       "id": 2,
       "name": "Ervin Howell",
       "city": "Wisokyburgh",
-      "email": "Shanna@melissa.tv",
       "phone": "0106926593",
       "company": "Deckow-Crist"
     },
     {
       "id": 3,
       "name": "Clementine Bauch",
-      "email": "Nathan@yesenia.net",
       "city": "McKenziehaven",
       "phone": "1463234447",
       "company": "Romaguera-Jacobson"
@@ -27,7 +24,6 @@
     {
       "id": 4,
       "name": "Patricia Lebsack",
-      "email": "Julianne.OConner@kory.org",
       "city": "South Elvis",
       "phone": "4931709623",
       "company": "Robel-Corkery"
@@ -35,10 +31,10 @@
     {
       "id": 5,
       "name": "Chelsey Dietrich",
-      "email": "Lucio_Hettinger@annie.ca",
       "city": "Roscoeview",
       "phone": "2549541289",
       "company": "Keebler LLC"
     }
-  ]
+  ],
+  "login": []
 }

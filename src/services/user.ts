@@ -1,6 +1,6 @@
 import { UserData } from '../types/user-data';
 
-const USER_DATA_KEY = 'contacts-app-token';
+const USER_DATA_KEY = 'contacts-app-user';
 
 export type Token = string;
 

@@ -75,7 +75,7 @@ export const sendNewContact = createAsyncThunk<
 );
 
 export const updateContact = createAsyncThunk<
-  undefined,
+  void,
   Contact,
   {
     dispatch: AppDispatch;

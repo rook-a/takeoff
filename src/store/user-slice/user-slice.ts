@@ -40,8 +40,11 @@ export const checkAuthAction = createAsyncThunk<
   }
 >('user/checkAuth', async (_arg, { dispatch, extra: api }) => {
   try {
-    await api.get(APIRoute.Login);
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
+    const { data } = await api.get(APIRoute.Login);
+    if (data.length > 0) {
+      dispatch(requireAuthorization(AuthorizationStatus.Auth));
+    }
+    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
   } catch (err) {
     handleError(err);
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
@@ -85,7 +88,8 @@ export const logoutAction = createAsyncThunk<
   }
 >('user/logout', async (_arg, { dispatch, extra: api }) => {
   try {
-    await api.delete(APIRoute.Logout);
+    await api.delete(`${APIRoute.Login}/1`);
+    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     dispatch(redirectToRoute(AppRoute.Root));
   } catch (err) {
     handleError(err);
@@ -134,7 +138,7 @@ export const { requireAuthorization } = userSlice.actions;
 
 const selectUserState = (state: State) => state[NameSpace.User];
 
-export const selectRequireAuthrization = (state: State) =>
+export const selectAuthrizationStatus = (state: State) =>
   selectUserState(state).authorizationStatus;
 export const selectloginStatus = (state: State) =>
   selectUserState(state).loginStatus;
