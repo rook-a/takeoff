@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 
 import { handleError } from '../../services/handle-error';
@@ -141,10 +141,13 @@ export const contactsSlice = createSlice({
       .addCase(fetchContacts.pending, (state) => {
         state.contactsStatus = FetchStatus.Pending;
       })
-      .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts = action.payload;
-        state.contactsStatus = FetchStatus.Fulfilled;
-      })
+      .addCase(
+        fetchContacts.fulfilled,
+        (state, action: PayloadAction<Contact[]>) => {
+          state.contacts = action.payload;
+          state.contactsStatus = FetchStatus.Fulfilled;
+        },
+      )
       .addCase(fetchContacts.rejected, (state) => {
         state.contactsStatus = FetchStatus.Rejected;
       })

@@ -53,4 +53,4 @@ npm run start:server
 
 - **POST** http://localhost:3001/contacts — отправить новый заказ.
 
-- **POST** http://localhost:3001/users — отправить `логин и пароль` для авторизации.
+- **POST** http://localhost:3001/users — отправить `логин и пароль` для фейковой авторизации.

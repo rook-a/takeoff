@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 
 import { removeUser, setUser } from '../../services/user';
@@ -103,7 +103,10 @@ export const userSlice = createSlice({
   name: NameSpace.User,
   initialState,
   reducers: {
-    requireAuthorization: (state, action) => {
+    requireAuthorization: (
+      state,
+      action: PayloadAction<AuthorizationStatus>,
+    ) => {
       state.authorizationStatus = action.payload;
     },
   },
@@ -112,11 +115,14 @@ export const userSlice = createSlice({
       .addCase(loginAction.pending, (state) => {
         state.loginStatus = FetchStatus.Pending;
       })
-      .addCase(loginAction.fulfilled, (state, action) => {
-        state.loginStatus = FetchStatus.Fulfilled;
-        state.authorizationStatus = AuthorizationStatus.Auth;
-        setUser(action.payload);
-      })
+      .addCase(
+        loginAction.fulfilled,
+        (state, action: PayloadAction<UserData>) => {
+          state.loginStatus = FetchStatus.Fulfilled;
+          state.authorizationStatus = AuthorizationStatus.Auth;
+          setUser(action.payload);
+        },
+      )
       .addCase(loginAction.rejected, (state) => {
         state.loginStatus = FetchStatus.Rejected;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
